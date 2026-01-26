@@ -66,15 +66,19 @@
         border-left: 4px solid #144f1f;
       }
 
-      /* AI Future Card Styles */
-      .ai-card {
+      /* Future Card Styles (Base) */
+      .future-card {
         background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
         color: white;
-        border-radius: 24px;
+        border-radius: 20px;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         border: 1px solid #374151;
+        display: flex;
+        flex-direction: row; /* Layout horizontal para economizar altura */
+        align-items: center;
+        padding: 1.5rem;
       }
       
       /* Efeito de Scanner da IA */
@@ -96,29 +100,49 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 50px; /* Altura do rastro do scanner */
+        height: 50px;
         animation: scan-trail 3s ease-in-out infinite;
         z-index: 19;
       }
 
+      /* Efeito de Pulso para IoT */
+      .pulse-ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid #3b82f6;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        animation: pulse-ripple 2s linear infinite;
+      }
+      
+      @keyframes pulse-ripple {
+        0% { width: 40%; height: 40%; opacity: 0.8; }
+        100% { width: 150%; height: 150%; opacity: 0; }
+      }
+
       @keyframes scan {
-        0%, 100% { top: 10%; opacity: 0; }
+        0%, 100% { top: 5%; opacity: 0; }
         10% { opacity: 1; }
         90% { opacity: 1; }
-        50% { top: 60%; }
+        50% { top: 90%; }
       }
       
       @keyframes scan-trail {
-        0%, 100% { top: 10%; opacity: 0; }
+        0%, 100% { top: 5%; opacity: 0; }
         10% { opacity: 1; }
         90% { opacity: 1; }
-        50% { top: 60%; }
+        50% { top: 90%; }
       }
 
-      .ai-badge {
+      .tech-badge {
         background: rgba(255,255,255,0.1);
         backdrop-filter: blur(5px);
         border: 1px solid rgba(255,255,255,0.2);
+        white-space: nowrap;
       }
     </style>
   </head>
@@ -129,7 +153,7 @@
       <div class="absolute top-0 right-0 w-1/2 h-full bg-gray-50 z-0 transform skew-x-12 translate-x-20"></div>
 
       <!-- Header -->
-      <div class="relative z-10 mb-10 flex justify-between items-end">
+      <div class="relative z-10 mb-8 flex justify-between items-end">
         <div>
           <div class="flex items-center mb-2">
             <span class="w-8 h-1 bg-brand-yellow mr-3"></span>
@@ -144,17 +168,17 @@
       </div>
 
       <!-- Main Content Grid -->
-      <div class="relative z-10 grid grid-cols-2 gap-12 h-full pb-8">
+      <div class="relative z-10 grid grid-cols-2 gap-12 h-full pb-16">
         
         <!-- Left Column: Achievements (Recap) -->
-        <div class="flex flex-col justify-center gap-6">
-          <h3 class="font-heading text-xl font-bold text-gray-700 mb-2">
+        <div class="flex flex-col justify-center gap-5">
+          <h3 class="font-heading text-xl font-bold text-gray-700 mb-1">
             O que entregamos hoje:
           </h3>
 
           <!-- Card 1 -->
           <div class="success-card">
-            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-brand-green mr-4 text-xl">
+            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-brand-green mr-4 text-xl flex-shrink-0">
               <i class="fas fa-check"></i>
             </div>
             <div>
@@ -165,7 +189,7 @@
 
           <!-- Card 2 -->
           <div class="success-card">
-            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4 text-xl">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4 text-xl flex-shrink-0">
               <i class="fas fa-code"></i>
             </div>
             <div>
@@ -176,7 +200,7 @@
 
           <!-- Card 3 -->
           <div class="success-card">
-            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-700 mr-4 text-xl">
+            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-700 mr-4 text-xl flex-shrink-0">
               <i class="fas fa-smile"></i>
             </div>
             <div>
@@ -186,61 +210,82 @@
           </div>
 
           <!-- Quote -->
-          <div class="mt-4 border-l-4 border-brand-green pl-4 py-2">
+          <div class="mt-2 border-l-4 border-brand-green pl-4 py-2">
             <p class="text-gray-600 italic text-sm">
               "Transformamos um débito técnico em um ativo estratégico para a empresa."
             </p>
           </div>
         </div>
 
-        <!-- Right Column: The Future (AI Integration) -->
-        <div class="flex flex-col">
-          <h3 class="font-heading text-xl font-bold text-gray-700 mb-4 flex items-center">
-            Próximo Passo: 
+        <!-- Right Column: The Future (AI & IoT) -->
+        <div class="flex flex-col gap-4 justify-center">
+          <h3 class="font-heading text-xl font-bold text-gray-700 mb-0 flex items-center">
+            Próximos Passos: 
           </h3>
 
-          <div class="ai-card flex-1 p-8 flex flex-col items-center justify-center text-center relative group">
-            
-            <!-- Background Grid Effect inside card -->
+          <!-- 1. AI Integration Card -->
+          <div class="future-card flex-1 group">
+            <!-- Background Grid -->
             <div class="absolute inset-0 opacity-10" 
                  style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;">
             </div>
 
-            <!-- AI Visual Representation -->
-            <div class="relative w-48 h-48 mb-6">
-                <!-- Image being scanned -->
+            <!-- Visual (Left side of card) -->
+            <div class="relative w-32 h-24 mr-6 flex-shrink-0">
                 <div class="w-full h-full bg-gray-700 rounded-xl overflow-hidden border-2 border-gray-600 relative">
                     <img src="./assets/images/pages/outros/pneu_veiculo.jpg" class="w-full h-full object-cover opacity-50 grayscale" alt="Veículo">
-                    
-                    <!-- Bounding Boxes (Simulating AI detection) -->
-                    <div class="absolute top-10 left-8 w-24 h-16 border-2 border-brand-yellow opacity-80 rounded">
-                        <span class="absolute -top-5 left-0 bg-brand-yellow text-black text-[10px] font-bold px-1">Pneu: OK (98%)</span>
-                    </div>
+                    <div class="absolute top-4 left-4 w-16 h-10 border-2 border-brand-yellow opacity-80 rounded"></div>
                 </div>
-
-                <!-- Scanning Animation Lines -->
                 <div class="scanner-line"></div>
                 <div class="scan-overlay"></div>
             </div>
 
-            <h2 class="font-heading text-3xl font-bold text-white mb-2">
-              Integração com <span class="text-brand-yellow">I.A.</span>
-            </h2>
-            
-            <p class="text-gray-300 text-sm mb-6 max-w-xs">
-              Utilização de modelos de Visão Computacional para validar fotos do checklist automaticamente em tempo real.
-            </p>
+            <!-- Text (Right side of card) -->
+            <div class="relative z-10">
+                <h2 class="font-heading text-2xl font-bold text-white mb-1">
+                  Integração <span class="text-brand-yellow">I.A.</span>
+                </h2>
+                <p class="text-gray-300 text-xs mb-3 leading-relaxed">
+                  Validação automática de fotos com Visão Computacional em tempo real.
+                </p>
+                <div class="flex gap-2">
+                    <span class="tech-badge px-2 py-1 rounded text-[10px] text-brand-yellow font-mono">
+                        <i class="fas fa-robot mr-1"></i> TensorFlow
+                    </span>
+                </div>
+            </div>
+          </div>
 
-            <div class="flex gap-3">
-                <span class="ai-badge px-3 py-1 rounded-full text-xs text-brand-yellow font-mono">
-                    <i class="fas fa-robot mr-1"></i> TensorFlow Lite
-                </span>
-                <span class="ai-badge px-3 py-1 rounded-full text-xs text-green-400 font-mono">
-                    <i class="fas fa-check-circle mr-1"></i> Auto-Validation
-                </span>
+          <!-- 2. Vehicle Integration Card (NEW) -->
+          <div class="future-card flex-1 group border-blue-900" style="background: linear-gradient(145deg, #0f172a 0%, #1e3a8a 100%);">
+            <!-- Background Grid -->
+            <div class="absolute inset-0 opacity-10" 
+                 style="background-image: radial-gradient(#60a5fa 1px, transparent 1px); background-size: 20px 20px;">
             </div>
 
+            <!-- Visual (Left side of card) -->
+            <div class="relative w-32 h-24 mr-6 flex-shrink-0 flex items-center justify-center bg-gray-900 rounded-xl border border-blue-700 overflow-hidden">
+                <div class="pulse-ring"></div>
+                <i class="fas fa-car text-4xl text-blue-400 relative z-10"></i>
+                <i class="fas fa-wifi absolute top-2 right-2 text-blue-500 text-xs animate-pulse"></i>
+            </div>
+
+            <!-- Text (Right side of card) -->
+            <div class="relative z-10">
+                <h2 class="font-heading text-2xl font-bold text-white mb-1">
+                  Integração <span class="text-blue-400">Tecnologias</span>
+                </h2>
+                <p class="text-gray-300 text-xs mb-3 leading-relaxed">
+                  Teste automático de sensores, telemetria e odômetro ao iniciar o checklist.
+                </p>
+                <div class="flex gap-2">
+                    <span class="tech-badge px-2 py-1 rounded text-[10px] text-green-400 font-mono">
+                        <i class="fas fa-bolt mr-1"></i> Auto-Check
+                    </span>
+                </div>
+            </div>
           </div>
+
         </div>
 
       </div>
