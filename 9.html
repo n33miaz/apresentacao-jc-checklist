@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Fluxo Unificado de Checklist</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Fira+Code:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f3f4f6;
+      }
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        overflow: hidden;
+        font-family: "Open Sans", sans-serif;
+      }
+      .font-heading {
+        font-family: "Montserrat", sans-serif;
+      }
+      .font-mono {
+        font-family: "Fira Code", monospace;
+      }
+      .text-brand-green {
+        color: #144f1f;
+      }
+      .bg-brand-green {
+        background-color: #144f1f;
+      }
+      .text-brand-yellow {
+        color: #f1ca14;
+      }
+      .bg-brand-yellow {
+        background-color: #f1ca14;
+      }
+      .border-brand-green {
+        border-color: #144f1f;
+      }
+
+      /* Architecture Boxes */
+      .arch-box {
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        z-index: 10;
+        transition: transform 0.2s;
+      }
+      .arch-box:hover {
+        transform: translateY(-2px);
+        border-color: #144f1f;
+        box-shadow: 0 8px 15px -3px rgba(20, 79, 31, 0.15);
+      }
+      
+      .arch-box.core {
+        background: #144f1f;
+        border-color: #144f1f;
+        color: white;
+      }
+
+      /* Connectors */
+      .connector-v {
+        width: 2px;
+        background-color: #cbd5e1;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+      }
+      
+      .arrow-down {
+        width: 0; 
+        height: 0; 
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 8px solid #cbd5e1;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+      }
+
+      /* Feature Card Compact */
+      .feat-card {
+        background: white;
+        border-left: 4px solid #144f1f;
+        border-radius: 8px;
+        padding: 12px 16px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10 relative">
+      <!-- Background Elements -->
+      <div class="absolute top-0 right-0 w-1/3 h-full bg-gray-50 z-0 opacity-50 border-l border-gray-100"></div>
+      
+      <!-- Header -->
+      <div class="relative z-10 mb-6 flex justify-between items-end">
+        <div>
+          <div class="flex items-center mb-2">
+            <span class="w-8 h-1 bg-brand-yellow mr-3"></span>
+            <p class="text-sm font-bold text-gray-500 uppercase tracking-widest">
+              Engenharia de Software
+            </p>
+          </div>
+          <h1 class="font-heading text-4xl font-extrabold text-gray-900">
+            O Coração do App: <span class="text-brand-green">Fluxo Unificado</span>
+          </h1>
+          <p class="text-gray-500 mt-2 text-lg">
+            Arquitetura modular baseada em <span class="font-mono text-sm bg-gray-100 px-2 py-0.5 rounded text-pink-600 font-bold">ChecklistUnifiedModel</span>.
+          </p>
+        </div>
+        
+        <!-- Status Indicator -->
+        <div class="bg-green-50 px-4 py-2 rounded-lg border border-green-100 flex items-center shadow-sm">
+          <div class="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+          <div>
+            <p class="text-xs text-gray-500 font-semibold uppercase">Performance Core</p>
+            <p class="text-brand-green font-bold text-sm">Alta Disponibilidade</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Grid -->
+      <div class="flex-1 grid grid-cols-12 gap-8 relative z-10">
+        
+        <!-- LEFT COLUMN: The Architecture Diagram (7 Cols) -->
+        <div class="col-span-7 relative h-full flex flex-col items-center justify-center py-4">
+          
+          <!-- Layer 1: UI -->
+          <div class="arch-box w-64 h-14 border-brand-green text-brand-green">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-mobile-alt"></i>
+              <span class="font-bold text-sm">UI / ViewModels / Pages</span>
+            </div>
+          </div>
+
+          <!-- Connector 1 -->
+          <div class="relative h-8 w-full">
+            <div class="connector-v h-full"></div>
+            <div class="arrow-down top-full"></div>
+          </div>
+
+          <!-- Layer 2: CORE (Unified Model) with Side Modules -->
+          <div class="relative w-full flex justify-center items-center h-32 my-1">
+            
+            <!-- Side Module: Rules -->
+            <div class="absolute left-4 top-1/2 transform -translate-y-1/2 arch-box w-28 h-20 bg-yellow-50 border-brand-yellow">
+              <i class="fas fa-gavel text-brand-yellow mb-1 text-lg"></i>
+              <span class="text-[10px] font-bold text-gray-700 text-center leading-tight">PGR<br>Config</span>
+            </div>
+            
+            <!-- Connecting Line Left -->
+            <div class="absolute left-32 top-1/2 w-16 h-0.5 bg-gray-300"></div>
+
+            <!-- THE CORE BOX -->
+            <div class="arch-box core w-64 h-28 shadow-xl">
+              <div class="absolute -top-3 bg-brand-yellow text-brand-green text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">
+                Single Source of Truth
+              </div>
+              <i class="fas fa-cogs mb-2 text-3xl text-brand-yellow"></i>
+              <h3 class="font-heading font-bold text-lg">Unified Model</h3>
+              <p class="text-[10px] opacity-80 mt-1 font-mono bg-black bg-opacity-20 px-2 rounded">Veicular + Rastreamento</p>
+            </div>
+
+            <!-- Connecting Line Right -->
+            <div class="absolute right-32 top-1/2 w-16 h-0.5 bg-gray-300"></div>
+
+            <!-- Side Module: Services -->
+            <div class="absolute right-4 top-1/2 transform -translate-y-1/2 arch-box w-28 h-20 bg-blue-50 border-blue-300">
+              <i class="fas fa-cloud-upload-alt text-blue-500 mb-1 text-lg"></i>
+              <span class="text-[10px] font-bold text-gray-700 text-center leading-tight">Chunk<br>Upload</span>
+            </div>
+          </div>
+
+          <!-- Connector 2 -->
+          <div class="relative h-8 w-full">
+            <div class="connector-v h-full"></div>
+            <div class="arrow-down top-full"></div>
+          </div>
+
+          <!-- Layer 3: Data Repository -->
+          <div class="arch-box w-64 h-12 bg-gray-50 text-gray-700">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-database text-xs"></i>
+              <span class="font-bold text-sm">ChecklistRepository</span>
+            </div>
+          </div>
+
+          <!-- Connector 3 (Split) -->
+          <div class="relative h-8 w-64">
+            <div class="connector-v h-1/2"></div> <!-- Half down -->
+            <div class="absolute top-1/2 left-10 right-10 h-2 border-t-2 border-l-2 border-r-2 border-gray-300 rounded-t-lg"></div> <!-- Branch -->
+          </div>
+
+          <!-- Layer 4: Data Sources -->
+          <div class="flex gap-6 mt-1">
+            <div class="arch-box w-28 h-10 bg-purple-50 border-purple-200 text-purple-700">
+              <span class="text-xs font-bold"><i class="fas fa-hdd mr-1"></i>Floor SQL</span>
+            </div>
+            <div class="arch-box w-28 h-10 bg-blue-50 border-blue-200 text-blue-700">
+              <span class="text-xs font-bold"><i class="fas fa-cloud mr-1"></i>Web API</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Features List (5 Cols) -->
+        <div class="col-span-5 flex flex-col justify-center gap-3">
+          
+          <!-- Feature 1 -->
+          <div class="feat-card hover:bg-green-50 transition-colors">
+            <div class="flex justify-between items-start">
+              <h3 class="font-bold text-gray-800 text-base">1. Modelo Unificado</h3>
+              <i class="fas fa-link text-brand-green opacity-50"></i>
+            </div>
+            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+              Fim da duplicação de código. Um único motor gerencia regras de "Veicular" e "Rastreamento", facilitando manutenção futura.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feat-card border-l-brand-yellow hover:bg-yellow-50 transition-colors">
+            <div class="flex justify-between items-start">
+              <h3 class="font-bold text-gray-800 text-base">2. PGR Dinâmico</h3>
+              <i class="fas fa-shield-alt text-brand-yellow"></i>
+            </div>
+            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+              Regras de negócio injetadas pela API (`PgrConfig`). O app decide quais campos são obrigatórios em tempo real.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feat-card border-l-blue-500 hover:bg-blue-50 transition-colors">
+            <div class="flex justify-between items-start">
+              <h3 class="font-bold text-gray-800 text-base">3. Upload em "Chunks"</h3>
+              <i class="fas fa-images text-blue-500"></i>
+            </div>
+            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+              Fotos fatiadas em 512KB via `ChunkUploadService`. Resolve timeouts em 3G e evita estouro de memória no servidor.
+            </p>
+          </div>
+
+          <!-- Feature 4 (NEW) -->
+          <div class="feat-card border-l-purple-500 hover:bg-purple-50 transition-colors">
+            <div class="flex justify-between items-start">
+              <h3 class="font-bold text-gray-800 text-base">4. Cache Inteligente</h3>
+              <i class="fas fa-bolt text-purple-500"></i>
+            </div>
+            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+              `HomeCacheManager` garante carregamento instantâneo. O app abre com dados locais enquanto atualiza em background.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script src="js/navigator.js"></script>
+  </body>
+</html>

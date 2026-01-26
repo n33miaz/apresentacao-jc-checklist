@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Modernização do Backend</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Fira+Code:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f3f4f6;
+      }
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        overflow: hidden;
+        font-family: "Open Sans", sans-serif;
+      }
+      .font-heading {
+        font-family: "Montserrat", sans-serif;
+      }
+      .font-mono {
+        font-family: "Fira Code", monospace;
+      }
+      .text-brand-green {
+        color: #144f1f;
+      }
+      .bg-brand-green {
+        background-color: #144f1f;
+      }
+      .text-brand-yellow {
+        color: #f1ca14;
+      }
+      .bg-brand-yellow {
+        background-color: #f1ca14;
+      }
+
+      /* Code Block Styles */
+      .code-panel {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        font-family: "Fira Code", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #e2e8f0;
+        position: relative;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        height: 100%;
+        border: 1px solid #334155;
+      }
+
+      .code-line {
+        display: block;
+      }
+
+      .diff-remove {
+        background-color: rgba(239, 68, 68, 0.2);
+        color: #fca5a5;
+        text-decoration: line-through;
+        display: block;
+        padding: 0 4px;
+        border-radius: 4px;
+      }
+
+      .diff-add {
+        background-color: rgba(34, 197, 94, 0.2);
+        color: #86efac;
+        display: block;
+        padding: 0 4px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+
+      .keyword {
+        color: #c678dd;
+      }
+      .string {
+        color: #98c379;
+      }
+      .method {
+        color: #61afef;
+      }
+      .comment {
+        color: #5c6370;
+        font-style: italic;
+      }
+
+      .arrow-connector {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 20;
+        border: 2px solid #e5e7eb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-12 relative">
+      <!-- Header -->
+      <div class="relative z-10 mb-8 flex justify-between items-end">
+        <div>
+          <div class="flex items-center mb-2">
+            <!-- A classe bg-brand-yellow agora funcionará corretamente -->
+            <span class="w-8 h-1 bg-brand-yellow mr-3"></span>
+            <p
+              class="text-sm font-bold text-gray-500 uppercase tracking-widest"
+            >
+              Backend & API
+            </p>
+          </div>
+          <h1 class="font-heading text-4xl font-extrabold text-gray-900">
+            Otimização da <span class="text-brand-green">WebAPI</span>
+          </h1>
+          <p class="text-gray-500 mt-2 text-lg">
+            Refatoração crítica para segurança, escalabilidade e performance de
+            dados.
+          </p>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="flex gap-3">
+          <span
+            class="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold border border-purple-200"
+          >
+            .NET Core
+          </span>
+          <span
+            class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold border border-blue-200"
+          >
+            SQL Server
+          </span>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="grid grid-cols-2 gap-12 flex-1 relative mb-6">
+        <!-- Seta central -->
+        <div class="arrow-connector">
+          <i class="fas fa-arrow-right text-gray-400 text-xl"></i>
+        </div>
+
+        <!-- Left: Old Code -->
+        <div class="flex flex-col">
+          <div class="flex justify-between items-center mb-3 px-1">
+            <h3 class="font-heading font-bold text-gray-600">
+              Código Legado (Risco)
+            </h3>
+            <span
+              class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded"
+              >Hardcoded</span
+            >
+          </div>
+
+          <div class="code-panel border-l-4 border-l-red-500">
+            <div class="font-mono text-xs mb-2 text-gray-400">
+              // WebAPIController.cs (Antigo)
+            </div>
+            <br />
+            <span class="code-line"
+              ><span class="keyword">string</span> sql =
+              <span class="string">"SELECT * FROM VEICULOS..."</span>;</span
+            >
+            <br />
+            <span class="code-line comment"
+              >// ❌ IDs fixos no código (Risco de Segurança)</span
+            >
+            <span class="code-line diff-remove"
+              >WHERE CD_CLIENTE IN (16413, 17607, 16614...)</span
+            >
+            <br />
+            <span class="code-line comment"
+              >// ❌ Sem Paginação (Trava o App)</span
+            >
+            <span class="code-line diff-remove"
+              >var lista = db.Query(sql).ToList();</span
+            >
+            <br />
+            <span class="code-line comment"
+              >// ❌ Concatenação direta (SQL Injection)</span
+            >
+            <span class="code-line diff-remove"
+              >sql += "AND PLACA LIKE '%" + search + "%'";</span
+            >
+          </div>
+        </div>
+
+        <!-- Right: New Code -->
+        <div class="flex flex-col">
+          <div class="flex justify-between items-center mb-3 px-1">
+            <h3 class="font-heading font-bold text-brand-green">
+              Código Refatorado
+            </h3>
+            <span
+              class="bg-green-100 text-brand-green text-xs font-bold px-2 py-1 rounded"
+              >Dinâmico</span
+            >
+          </div>
+
+          <div class="code-panel border-l-4 border-l-green-500">
+            <div class="font-mono text-xs mb-2 text-gray-400">
+              // WebAPIController.cs (Novo)
+            </div>
+            <br />
+            <span class="code-line"
+              ><span class="keyword">int</span> idCliente =
+              <span class="method">GetClienteIdDoUsuario</span>(userId);</span
+            >
+            <br />
+            <span class="code-line comment"
+              >// ✅ Permissões Dinâmicas (Multi-tenant)</span
+            >
+            <span class="code-line diff-add"
+              ><span class="keyword">string</span> ids =
+              <span class="method">GetIdsPermitidosParaQuery</span
+              >(idCliente);</span
+            >
+            <span class="code-line"
+              >sb.AppendLine(<span class="string"
+                >$"WHERE CD_CLIENTE IN ({ids})"</span
+              >);</span
+            >
+            <br />
+            <span class="code-line comment"
+              >// ✅ Paginação no Banco (Performance)</span
+            >
+            <span class="code-line diff-add"
+              >sb.Append(<span class="method">AplicarPaginacao</span>(page,
+              pageSize));</span
+            >
+            <br />
+            <span class="code-line comment">// ✅ Sanitização de Inputs</span>
+            <span class="code-line diff-add"
+              ><span class="keyword">string</span> s = search.Replace("'",
+              "''");</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Badges Footer -->
+      <div class="grid grid-cols-3 gap-6 mt-4">
+        <!-- Badge 1 -->
+        <div
+          class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-brand-green mr-3"
+          >
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 text-sm">Segurança</h4>
+            <p class="text-xs text-gray-500">
+              Validação de Token e IDs dinâmicos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Badge 2 -->
+        <div
+          class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3"
+          >
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 text-sm">Performance</h4>
+            <p class="text-xs text-gray-500">
+              Paginação via OFFSET/FETCH no SQL.
+            </p>
+          </div>
+        </div>
+
+        <!-- Badge 3 -->
+        <div
+          class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center"
+        >
+          <div
+            class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-700 mr-3"
+          >
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 text-sm">Novo Dashboard</h4>
+            <p class="text-xs text-gray-500">
+              Endpoint único para contadores da Home.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/navigator.js"></script>
+  </body>
+</html>

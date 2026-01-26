@@ -1,0 +1,291 @@
+<!doctype html>
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Resumo Executivo - JC Checklist</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f3f4f6;
+      }
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        overflow: hidden;
+        font-family: "Open Sans", sans-serif;
+      }
+      .font-heading {
+        font-family: "Montserrat", sans-serif;
+      }
+      .text-brand-green {
+        color: #144f1f;
+      }
+      .bg-brand-green {
+        background-color: #144f1f;
+      }
+      .text-brand-yellow {
+        color: #f1ca14;
+      }
+      .bg-brand-yellow {
+        background-color: #f1ca14;
+      }
+      .border-brand-green {
+        border-color: #144f1f;
+      }
+      .card-shadow {
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.05),
+          0 4px 6px -2px rgba(0, 0, 0, 0.025);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-12 relative">
+      <!-- Background Decor -->
+      <div
+        class="absolute top-0 right-0 w-64 h-64 bg-gray-50 rounded-bl-full z-0 opacity-50"
+      ></div>
+      <div class="absolute bottom-0 left-0 w-full h-2 bg-brand-green z-0"></div>
+      <!-- Header -->
+      <div class="relative z-10 mb-8 flex justify-between items-end">
+        <div>
+          <div class="flex items-center mb-2">
+            <span class="w-8 h-1 bg-brand-yellow mr-3"></span>
+            <p
+              class="text-sm font-bold text-gray-500 uppercase tracking-widest"
+            >
+              Visão Geral
+            </p>
+          </div>
+          <h1 class="font-heading text-4xl font-extrabold text-gray-900">
+            Resumo <span class="text-brand-green">Executivo</span>
+          </h1>
+        </div>
+        <!-- Enterprise Badge -->
+        <div
+          class="bg-gray-100 px-4 py-2 rounded-lg flex items-center border-l-4 border-brand-yellow"
+        >
+          <i class="fas fa-certificate text-brand-green mr-3 text-xl"></i>
+          <div class="text-right">
+            <p class="text-xs text-gray-500 uppercase font-semibold">
+              Novo Padrão
+            </p>
+            <p class="text-sm font-bold text-gray-800">Enterprise Grade</p>
+          </div>
+        </div>
+      </div>
+      <!-- Main Content - 3 Pillars -->
+      <div class="flex-1 flex gap-8 z-10 pb-4">
+        <!-- Pillar 1: Estabilidade -->
+        <div
+          class="flex-1 bg-white rounded-xl border border-gray-100 card-shadow relative overflow-hidden group"
+        >
+          <div
+            class="h-2 w-full bg-red-500 group-hover:h-3 transition-all duration-300"
+          ></div>
+          <div class="p-8 h-full flex flex-col">
+            <div
+              class="w-16 h-16 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-3xl mb-6 shadow-sm"
+            >
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-gray-800 mb-4">
+              Estabilidade
+            </h3>
+            <p class="text-gray-500 text-sm mb-6 border-b border-gray-100 pb-4">
+              Robustez técnica para operações críticas.
+            </p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-700 font-medium">
+                  Fim dos "crashes" e fechamentos inesperados.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-600 text-sm">
+                  Sincronização de dados resiliente a falhas.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-600 text-sm">
+                  Redução drástica de erros em campo.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Pillar 2: Performance -->
+        <div
+          class="flex-1 bg-white rounded-xl border border-gray-100 card-shadow relative overflow-hidden group"
+        >
+          <div
+            class="h-2 w-full bg-brand-yellow group-hover:h-3 transition-all duration-300"
+          ></div>
+          <div class="p-8 h-full flex flex-col">
+            <div
+              class="w-16 h-16 rounded-2xl bg-yellow-50 text-yellow-600 flex items-center justify-center text-3xl mb-6 shadow-sm"
+            >
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-gray-800 mb-4">
+              Performance
+            </h3>
+            <p class="text-gray-500 text-sm mb-6 border-b border-gray-100 pb-4">
+              Velocidade e disponibilidade total.
+            </p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-700 font-medium">
+                  App até 3x mais rápido na inicialização.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-600 text-sm">
+                  Modo 100% Offline para áreas remotas.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-600 text-sm">
+                  Carregamento suave com "Shimmer Effect".
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Pillar 3: Usabilidade -->
+        <div
+          class="flex-1 bg-white rounded-xl border border-gray-100 card-shadow relative overflow-hidden group"
+        >
+          <div
+            class="h-2 w-full bg-brand-green group-hover:h-3 transition-all duration-300"
+          ></div>
+          <div class="p-8 h-full flex flex-col">
+            <div
+              class="w-16 h-16 rounded-2xl bg-green-50 text-brand-green flex items-center justify-center text-3xl mb-6 shadow-sm"
+            >
+              <i class="fas fa-thumbs-up"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-gray-800 mb-4">
+              Usabilidade
+            </h3>
+            <p class="text-gray-500 text-sm mb-6 border-b border-gray-100 pb-4">
+              Experiência do usuário intuitiva.
+            </p>
+            <ul class="space-y-3 flex-1">
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-700 font-medium">
+                  Interface moderna e padronizada.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-600 text-sm">
+                  Fluxos simplificados com menos cliques.
+                </p>
+              </li>
+              <li class="flex items-start">
+                <i
+                  class="fas fa-check-circle text-green-500 mt-1 mr-3 text-sm"
+                ></i>
+                <p class="text-gray-600 text-sm">
+                  Feedback visual claro para o motorista.
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Executive Footer -->
+      <div
+        class="mt-6 px-8 py-5 bg-gray-50 border-t border-gray-200 flex items-center justify-between"
+      >
+        <!-- Left: Strategic Message -->
+        <div class="flex items-center gap-4">
+          <div
+            class="w-16 h-16 rounded-lg bg-opacity-10 flex items-center justify-center text-brand-green"
+          >
+            <img src="./assets/images/checklist_favicon.png" alt="" />
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800">
+              Evolução Técnica Consolidada
+            </p>
+            <p class="text-xs text-gray-500 max-w-md">
+              Arquitetura desacoplada, observabilidade ativa e camadas de
+              segurança alinhadas às boas práticas do mercado.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Technical Pillars -->
+        <div class="flex items-center gap-3 text-xs">
+          <span
+            class="px-3 py-1 rounded-full bg-white border border-gray-200 text-gray-700 font-semibold"
+          >
+            Clean Architecture
+          </span>
+          <span
+            class="px-3 py-1 rounded-full bg-white border border-gray-200 text-gray-700 font-semibold"
+          >
+            Segurança
+          </span>
+          <span
+            class="px-3 py-1 rounded-full bg-white border border-gray-200 text-gray-700 font-semibold"
+          >
+            Observabilidade
+          </span>
+          <span
+            class="px-3 py-1 rounded-full bg-white border border-gray-200 text-gray-700 font-semibold"
+          >
+            Escalabilidade
+          </span>
+        </div>
+      </div>
+    </div>
+    <script src="js/navigator.js"></script>
+  </body>
+</html>

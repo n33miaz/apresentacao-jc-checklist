@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Comparativo Visual: Home e Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f3f4f6;
+      }
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        overflow: hidden;
+        font-family: "Open Sans", sans-serif;
+      }
+      .font-heading {
+        font-family: "Montserrat", sans-serif;
+      }
+      .text-brand-green {
+        color: #144f1f;
+      }
+      .bg-brand-green {
+        background-color: #144f1f;
+      }
+      .text-brand-yellow {
+        color: #f1ca14;
+      }
+      .bg-brand-yellow {
+        background-color: #f1ca14;
+      }
+
+      /* Phone Mockup Styles */
+      .phone-frame {
+        width: 230px;
+        height: 445px;
+        border: 12px solid #1f2937;
+        border-radius: 36px;
+        position: relative;
+        background-color: #000; /* Fundo preto para segurança */
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      /* Notch removido */
+
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+        overflow: hidden;
+      }
+      
+      .phone-screen img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; /* Preenche todo o espaço sem bordas */
+        object-position: top center;
+      }
+
+      /* Highlight Badges */
+      .feature-badge {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        border-left: 3px solid transparent;
+      }
+      .feature-badge.new {
+        border-left-color: #144f1f;
+      }
+      .feature-badge.old {
+        border-left-color: #ef4444;
+        opacity: 0.8;
+      }
+
+      .comparison-column {
+        max-height: 550px;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10 relative">
+      <!-- Header -->
+      <div class="relative z-10 mb-6 flex justify-between items-end">
+        <div>
+          <div class="flex items-center mb-2">
+            <span class="w-8 h-1 bg-brand-yellow mr-3"></span>
+            <p
+              class="text-sm font-bold text-gray-500 uppercase tracking-widest"
+            >
+              Navegação &amp; Gestão
+            </p>
+          </div>
+          <h1 class="font-heading text-4xl font-extrabold text-gray-900">
+            Comparativo: <span class="text-brand-green">Home e Dashboard</span>
+          </h1>
+        </div>
+        <!-- Tech Stack Tags -->
+        <div class="flex gap-2">
+          <span
+            class="px-3 py-1 bg-gray-100 text-gray-600 rounded text-xs font-semibold border border-gray-200"
+          >
+            <i class="fas fa-magic mr-1"></i> Shimmer Effect
+          </span>
+          <span
+            class="px-3 py-1 bg-gray-100 text-gray-600 rounded text-xs font-semibold border border-gray-200"
+          >
+            <i class="fas fa-filter mr-1"></i> Smart Filters
+          </span>
+        </div>
+      </div>
+
+      <!-- Main Comparison Area -->
+      <div class="flex-1 flex gap-0 relative">
+        <!-- Center Divider / Arrow -->
+        <div
+          class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center"
+        >
+          <div
+            class="w-12 h-12 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-brand-green text-xl animate-pulse"
+          >
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Left Column: Legacy -->
+        <div
+          class="comparison-column flex-1 bg-red-50 bg-opacity-30 rounded-l-2xl border-l border-t border-b border-gray-200 p-6 flex flex-col items-center relative"
+        >
+          <div class="w-full flex justify-between items-center mb-6 px-4">
+            <h3 class="font-heading font-bold text-gray-700 text-xl">
+              Versão Anterior
+            </h3>
+            <span
+              class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded uppercase"
+              >Legado</span
+            >
+          </div>
+          <div class="flex gap-8 items-start w-full justify-center">
+            
+            <!-- Phone Mockup (Legacy) -->
+            <div class="phone-frame border-gray-400 opacity-90">
+              <!-- Notch removido -->
+              <div class="phone-screen">
+                <img src="./assets/images/pages/home_antigo.jpeg" alt="Home Antiga">
+              </div>
+            </div>
+
+            <!-- Issues List (Badges mantidos) -->
+            <div class="flex flex-col gap-2 mt-8 w-48">
+              <div class="feature-badge old">
+                <i class="fas fa-times-circle text-red-400 mr-2"></i>
+                <span class="text-gray-600 text-xs">Sem filtros de busca</span>
+              </div>
+              <div class="feature-badge old">
+                <i class="fas fa-times-circle text-red-400 mr-2"></i>
+                <span class="text-gray-600 text-xs">Carregamento travado</span>
+              </div>
+              <div class="feature-badge old">
+                <i class="fas fa-times-circle text-red-400 mr-2"></i>
+                <span class="text-gray-600 text-xs"
+                  >Sem contadores (Badges)</span
+                >
+              </div>
+              <div class="feature-badge old">
+                <i class="fas fa-times-circle text-red-400 mr-2"></i>
+                <span class="text-gray-600 text-xs">Informação misturada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: New Version -->
+        <div
+          class="comparison-column flex-1 bg-green-50 bg-opacity-30 rounded-r-2xl border-r border-t border-b border-green-100 p-6 flex flex-col items-center relative"
+        >
+          <div class="w-full flex justify-between items-center mb-6 px-4">
+            <h3 class="font-heading font-bold text-brand-green text-xl">
+              Nova Versão
+            </h3>
+            <span
+              class="bg-brand-green text-white text-xs font-bold px-2 py-1 rounded uppercase"
+              >Atual</span
+            >
+          </div>
+          <div class="flex gap-8 items-start w-full justify-center">
+            
+            <!-- Improvements List (Badges mantidos) -->
+            <div class="flex flex-col gap-2 mt-8 w-48 text-right items-end">
+              <div class="feature-badge new">
+                <span class="text-gray-700 font-semibold text-xs"
+                  >Abas Dinâmicas + Badges</span
+                >
+                <i class="fas fa-check-circle text-brand-green ml-2"></i>
+              </div>
+              <div class="feature-badge new">
+                <span class="text-gray-700 font-semibold text-xs"
+                  >Filtros (Data/Texto)</span
+                >
+                <i class="fas fa-filter text-brand-green ml-2"></i>
+              </div>
+              <div class="feature-badge new">
+                <span class="text-gray-700 font-semibold text-xs"
+                  >Shimmer Loading</span
+                >
+                <i class="fas fa-spinner text-brand-green ml-2"></i>
+              </div>
+              <div class="feature-badge new">
+                <span class="text-gray-700 font-semibold text-xs"
+                  >Design Clean / Cards</span
+                >
+                <i class="fas fa-layer-group text-brand-green ml-2"></i>
+              </div>
+            </div>
+
+            <!-- Phone Mockup (New) -->
+            <div class="phone-frame border-gray-800 transform scale-105 shadow-xl z-10">
+              <!-- Notch removido -->
+              <div class="phone-screen bg-white">
+                <img src="./assets/images/pages/home.jpeg" alt="Home Nova">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/navigator.js"></script>
+  </body>
+</html>

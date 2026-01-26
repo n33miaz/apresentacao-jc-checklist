@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Comparativo Visual: Login e Segurança</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f3f4f6;
+      }
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        overflow: hidden;
+        font-family: "Open Sans", sans-serif;
+      }
+      .font-heading {
+        font-family: "Montserrat", sans-serif;
+      }
+      .text-brand-green {
+        color: #144f1f;
+      }
+      .bg-brand-green {
+        background-color: #144f1f;
+      }
+      .text-brand-yellow {
+        color: #f1ca14;
+      }
+      .bg-brand-yellow {
+        background-color: #f1ca14;
+      }
+
+      /* Phone Mockup Styles */
+      .phone-frame {
+        width: 260px;
+        height: 520px;
+        /* A moldura do celular (borda escura) */
+        border: 12px solid #1f2937;
+        border-radius: 36px;
+        position: relative;
+        background-color: #000; /* Fundo preto para evitar bordas brancas se a imagem falhar */
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      /* Notch removido (estilo deletado) */
+
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        background-color: #000; /* Garante que não haja fundo branco */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+        overflow: hidden;
+      }
+
+      .phone-screen img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover; /* Faz a imagem preencher todo o espaço da moldura */
+        object-position: top center;
+      }
+
+      .placeholder-content {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .comparison-column {
+        max-height: 550px;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container p-10 relative">
+      <!-- Header -->
+      <div class="relative z-10 mb-4 flex justify-between items-end">
+        <div>
+          <div class="flex items-center mb-2">
+            <span class="w-8 h-1 bg-brand-yellow mr-3"></span>
+            <p
+              class="text-sm font-bold text-gray-500 uppercase tracking-widest"
+            >
+              Interface &amp; Segurança
+            </p>
+          </div>
+          <h1 class="font-heading text-4xl font-extrabold text-gray-900">
+            Comparativo:
+            <span class="text-brand-green">Preenchimento CheckList</span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Main Comparison Area -->
+      <div class="flex-1 flex gap-0 relative">
+        <!-- Center Divider / Arrow -->
+        <div
+          class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center"
+        >
+          <div
+            class="w-12 h-12 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-brand-green text-xl animate-pulse"
+          >
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Left Column: Legacy (Com Imagens) -->
+        <div
+          class="comparison-column flex-1 bg-red-50 bg-opacity-30 rounded-l-2xl border-l border-t border-b border-gray-200 p-4 flex flex-col items-center relative"
+        >
+          <div class="w-full flex justify-between items-center mb-4 px-4">
+            <h3 class="font-heading font-bold text-gray-700 text-xl">
+              Versão Anterior
+            </h3>
+            <span
+              class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded uppercase"
+              >Legado</span
+            >
+          </div>
+
+          <!-- Container dos Celulares (Lado Esquerdo) -->
+          <div
+            class="flex gap-4 items-center justify-center w-full h-full transform scale-90 origin-top"
+          >
+            <!-- Phone 1: Login Antigo -->
+            <div class="phone-frame border-gray-400 opacity-90">
+              <!-- Notch removido -->
+              <div class="phone-screen">
+                <img
+                  src="./assets/images/pages/checklist_antigo.jpeg"
+                  alt="Tela de Login Antiga"
+                />
+              </div>
+            </div>
+
+            <!-- Phone 2: Registro Antigo -->
+            <div class="phone-frame border-gray-400 opacity-90">
+              <!-- Notch removido -->
+              <div class="phone-screen">
+                <img
+                  src="./assets/images/pages/checklist2_antigo.jpeg"
+                  alt="Tela de Registro Antiga"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: New Version -->
+        <div
+          class="comparison-column flex-1 bg-green-50 bg-opacity-30 rounded-r-2xl border-r border-t border-b border-green-100 p-4 flex flex-col items-center relative"
+        >
+          <div class="w-full flex justify-between items-center mb-4 px-4">
+            <h3 class="font-heading font-bold text-brand-green text-xl">
+              Nova Versão
+            </h3>
+            <span
+              class="bg-brand-green text-white text-xs font-bold px-2 py-1 rounded uppercase"
+              >Atual</span
+            >
+          </div>
+
+          <!-- Container dos Celulares (Lado Direito) -->
+          <div
+            class="flex gap-4 items-center justify-center w-full h-full transform scale-90 origin-top"
+          >
+            <!-- Phone 1: Nova Versão -->
+            <div class="phone-frame border-gray-800 shadow-xl z-10">
+              <!-- Notch removido -->
+              <div class="phone-screen bg-white">
+                <img
+                  src="./assets/images/pages/checklist.jpeg"
+                  alt="Tela de Login Nova"
+                />
+              </div>
+            </div>
+
+            <!-- Phone 2: Nova Versão -->
+            <div class="phone-frame border-gray-800 shadow-xl z-10">
+              <!-- Notch removido -->
+              <div class="phone-screen bg-white">
+                <img
+                  src="./assets/images/pages/checklist2.jpeg"
+                  alt="Tela de Registro Nova"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/navigator.js"></script>
+  </body>
+</html>
