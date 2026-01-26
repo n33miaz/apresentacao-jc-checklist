@@ -1,21 +1,3 @@
-### 1. Descrição do Repositório (About)
-
-Esta é a frase curta que fica no topo, ao lado do botão "Star".
-
-**Opção A (Mais técnica):**
-> Apresentação interativa desenvolvida em HTML/JS detalhando a refatoração completa do app JC Checklist (Legado p/ Clean Architecture, SOLID e Offline-first).
-
-**Opção B (Mais executiva):**
-> Relatório técnico e visual sobre a evolução, redesign e otimização de performance do aplicativo móvel JC Checklist.
-
-**Tags (tópicos):** `html5` `presentation` `refactoring` `clean-architecture` `flutter` `showcase`
-
----
-
-### 2. README.md
-
-Crie um arquivo chamado `README.md` na raiz e cole o conteúdo abaixo. Lembre-se de substituir `SEU_USUARIO` pelo seu user do GitHub onde indicado.
-
 # 📊 Evolução JC Checklist - Apresentação Técnica
 
 [![GitHub Pages](https://img.shields.io/badge/Status-Online-success?style=for-the-badge&logo=github)](https://SEU_USUARIO.github.io/apresentacao-jc-checklist/)

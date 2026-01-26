@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Evolução do JC Checklist - Capa</title>
+    <title>Conclusão e Próximos Passos</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&amp;family=Open+Sans:wght@400;500;600&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Fira+Code:wght@500&amp;display=swap"
       rel="stylesheet"
     />
     <link
@@ -18,28 +18,6 @@
     />
     <link href="css/styles.css" rel="stylesheet" />
     <style>
-      /* --- CORREÇÃO PARA PDF FULLSCREEN --- */
-      @page {
-        size: 1280px 720px; /* Define o tamanho exato do papel */
-        margin: 0; /* Remove margens do navegador */
-      }
-      @media print {
-        body, html {
-          margin: 0;
-          padding: 0;
-          width: 1280px;
-          height: 720px;
-          -webkit-print-color-adjust: exact; /* Garante que cores de fundo saiam */
-          print-color-adjust: exact;
-        }
-        .slide-container {
-          width: 1280px !important;
-          height: 720px !important;
-          border: none !important; /* Remove bordas de debug se houver */
-        }
-      }
-      /* ------------------------------------- */
-
       body {
         margin: 0;
         padding: 0;
@@ -51,7 +29,8 @@
         height: 720px;
         position: relative;
         display: flex;
-        background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        flex-direction: column;
+        background-color: #ffffff;
         overflow: hidden;
         font-family: "Open Sans", sans-serif;
       }
@@ -71,159 +50,214 @@
         background-color: #f1ca14;
       }
 
-      /* Elementos Decorativos */
-      .bg-shape {
+      /* Cards de Conquista */
+      .success-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+      }
+      .success-card:hover {
+        transform: translateX(5px);
+        border-left: 4px solid #144f1f;
+      }
+
+      /* AI Future Card Styles */
+      .ai-card {
+        background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
+        color: white;
+        border-radius: 24px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        border: 1px solid #374151;
+      }
+      
+      /* Efeito de Scanner da IA */
+      .scanner-line {
         position: absolute;
         top: 0;
-        right: 0;
-        width: 45%;
-        height: 100%;
-        background-color: #144f1f;
-        clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-        z-index: 1;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #f1ca14;
+        box-shadow: 0 0 10px #f1ca14, 0 0 20px #f1ca14;
+        animation: scan 3s ease-in-out infinite;
+        z-index: 20;
       }
-      .glass-icon-container {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        border-radius: 2rem;
+      
+      .scan-overlay {
+        background: linear-gradient(to bottom, rgba(241, 202, 20, 0.1), transparent);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px; /* Altura do rastro do scanner */
+        animation: scan-trail 3s ease-in-out infinite;
+        z-index: 19;
       }
 
-      /* Animações */
-      .fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-        opacity: 0;
-        transform: translateY(20px);
+      @keyframes scan {
+        0%, 100% { top: 10%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        50% { top: 60%; }
       }
-      .delay-100 { animation-delay: 0.1s; }
-      .delay-200 { animation-delay: 0.2s; }
-      .delay-300 { animation-delay: 0.3s; }
+      
+      @keyframes scan-trail {
+        0%, 100% { top: 10%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        50% { top: 60%; }
+      }
 
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .ai-badge {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255,255,255,0.2);
       }
     </style>
   </head>
   <body>
-    <div class="slide-container">
+    <div class="slide-container p-12 relative">
       
-      <!-- Background Shape (Lado Direito Verde) -->
-      <div class="bg-shape shadow-2xl"></div>
+      <!-- Background Decor -->
+      <div class="absolute top-0 right-0 w-1/2 h-full bg-gray-50 z-0 transform skew-x-12 translate-x-20"></div>
 
-      <!-- Elemento Decorativo Bola (Marca D'água) -->
-      <div class="absolute -bottom-20 -left-20 z-0 opacity-5">
-        <img
-          src="./assets/images/jc_icone_bola.png"
-          class="w-[500px] h-auto grayscale"
-          alt="Elemento Decorativo"
-        />
+      <!-- Header -->
+      <div class="relative z-10 mb-10 flex justify-between items-end">
+        <div>
+          <div class="flex items-center mb-2">
+            <span class="w-8 h-1 bg-brand-yellow mr-3"></span>
+            <p class="text-sm font-bold text-gray-500 uppercase tracking-widest">
+              Roadmap & Encerramento
+            </p>
+          </div>
+          <h1 class="font-heading text-4xl font-extrabold text-gray-900">
+            Conclusão e <span class="text-brand-green">Futuro</span>
+          </h1>
+        </div>
       </div>
 
-      <!-- Elemento Decorativo Bola (Destaque na área verde) -->
-      <div class="absolute top-10 right-10 z-10 opacity-20">
-        <img
-          src="./assets/images/jc_icone_bola.png"
-          class="w-64 h-auto brightness-0 invert"
-          alt="Elemento Decorativo"
-        />
-      </div>
-
-      <!-- Grid Pattern -->
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiMxNDRmMWYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] z-0"></div>
-
-      <!-- Main Content Container -->
-      <div class="relative z-20 w-full h-full flex items-center px-24">
+      <!-- Main Content Grid -->
+      <div class="relative z-10 grid grid-cols-2 gap-12 h-full pb-8">
         
-        <!-- Coluna Esquerda: Texto -->
-        <div class="w-7/12 pr-12 flex flex-col justify-center h-full">
-            
-            <!-- Logo da Empresa -->
-            <div class="absolute top-12 left-24 fade-in-up">
-               <img
-                src="./assets/images/jc_logo_reta_verde.png"
-                alt="Logo JC"
-                class="w-48 h-auto object-contain"
-              />
+        <!-- Left Column: Achievements (Recap) -->
+        <div class="flex flex-col justify-center gap-6">
+          <h3 class="font-heading text-xl font-bold text-gray-700 mb-2">
+            O que entregamos hoje:
+          </h3>
+
+          <!-- Card 1 -->
+          <div class="success-card">
+            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-brand-green mr-4 text-xl">
+              <i class="fas fa-check"></i>
             </div>
-
-            <!-- Tags -->
-            <div class="flex gap-3 mb-6 fade-in-up delay-100">
-                <span class="px-3 py-1 bg-green-100 text-[#144F1F] text-xs font-bold uppercase tracking-wider rounded-full border border-green-200">
-                   Relatório Técnico
-                </span>
-                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold uppercase tracking-wider rounded-full border border-yellow-200">
-                   v1.0.23
-                </span>
+            <div>
+              <h4 class="font-bold text-gray-800">Estabilidade Enterprise</h4>
+              <p class="text-sm text-gray-500">Zero crashes críticos e sincronização resiliente.</p>
             </div>
+          </div>
 
-            <!-- Título Principal -->
-            <h1 class="font-heading text-6xl font-extrabold text-gray-900 leading-tight mb-4 fade-in-up delay-200">
-                Evolução do <br/>
-                <span class="text-brand-green relative inline-block">
-                    JC CheckList
-                    <span class="absolute bottom-2 left-0 w-full h-3 bg-brand-yellow -z-10 opacity-40 rounded-sm"></span>
-                </span>
-            </h1>
-
-            <!-- Subtítulo -->
-            <h2 class="font-heading text-2xl text-gray-600 font-medium mb-10 max-w-xl leading-relaxed fade-in-up delay-300">
-                Da instabilidade à <strong class="text-brand-green">Alta Performance</strong>: uma jornada de refatoração, arquitetura limpa e experiência do usuário.
-            </h2>
-
-            <!-- Divider -->
-            <div class="w-20 h-1.5 bg-brand-green rounded-full mb-10 fade-in-up delay-300"></div>
-
-            <!-- Autor/Footer -->
-            <div class="flex items-center gap-4 text-gray-500 text-sm font-semibold fade-in-up delay-300">
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full overflow-hidden border border-brand-yellow shadow-sm">
-                        <img src="./assets/images/pages/outros/neemias.jpeg" alt="Neemias" class="w-full h-full object-cover">
-                    </div>
-                    <span>Neemias Cormino Manso</span>
-                </div>
-
-                <span class="text-gray-300">|</span>
-                
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-calendar-alt text-brand-green"></i>
-                    <span>Janeiro, 2026</span>
-                </div>
+          <!-- Card 2 -->
+          <div class="success-card">
+            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-4 text-xl">
+              <i class="fas fa-code"></i>
             </div>
+            <div>
+              <h4 class="font-bold text-gray-800">Arquitetura Limpa</h4>
+              <p class="text-sm text-gray-500">Código desacoplado, testável e pronto para escalar.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="success-card">
+            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-700 mr-4 text-xl">
+              <i class="fas fa-smile"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-gray-800">Experiência do Usuário</h4>
+              <p class="text-sm text-gray-500">Interface fluida, feedback visual e modo offline.</p>
+            </div>
+          </div>
+
+          <!-- Quote -->
+          <div class="mt-4 border-l-4 border-brand-green pl-4 py-2">
+            <p class="text-gray-600 italic text-sm">
+              "Transformamos um débito técnico em um ativo estratégico para a empresa."
+            </p>
+          </div>
         </div>
 
-        <!-- Coluna Direita: Ícone do App -->
-        <div class="w-5/12 h-full flex items-center justify-center relative">
+        <!-- Right Column: The Future (AI Integration) -->
+        <div class="flex flex-col">
+          <h3 class="font-heading text-xl font-bold text-gray-700 mb-4 flex items-center">
+            Próximo Passo: 
+          </h3>
+
+          <div class="ai-card flex-1 p-8 flex flex-col items-center justify-center text-center relative group">
             
-            <!-- Círculo Glow -->
-            <div class="absolute w-96 h-96 bg-brand-yellow opacity-20 blur-3xl rounded-full"></div>
-
-            <!-- Ícone Container -->
-            <div class="glass-icon-container p-8 transform rotate-6 hover:rotate-0 transition-transform duration-700 ease-out fade-in-up delay-200">
-                 <img
-                  src="./assets/images/checklist_favicon.png"
-                  alt="Ícone App JC Checklist"
-                  class="w-48 h-48 object-contain drop-shadow-2xl filter"
-                />
+            <!-- Background Grid Effect inside card -->
+            <div class="absolute inset-0 opacity-10" 
+                 style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;">
             </div>
 
-            <!-- Tech Badges -->
-            <div class="absolute top-1/3 right-10 bg-white p-3 rounded-xl shadow-lg border border-gray-100 flex items-center gap-2 animate-bounce" style="animation-duration: 3s;">
-                <i class="fab fa-android text-green-500 text-2xl"></i>
-                <span class="font-bold text-gray-700 text-xs">Android Nativo</span>
+            <!-- AI Visual Representation -->
+            <div class="relative w-48 h-48 mb-6">
+                <!-- Image being scanned -->
+                <div class="w-full h-full bg-gray-700 rounded-xl overflow-hidden border-2 border-gray-600 relative">
+                    <img src="./assets/images/pages/outros/pneu_veiculo.jpg" class="w-full h-full object-cover opacity-50 grayscale" alt="Veículo">
+                    
+                    <!-- Bounding Boxes (Simulating AI detection) -->
+                    <div class="absolute top-10 left-8 w-24 h-16 border-2 border-brand-yellow opacity-80 rounded">
+                        <span class="absolute -top-5 left-0 bg-brand-yellow text-black text-[10px] font-bold px-1">Pneu: OK (98%)</span>
+                    </div>
+                </div>
+
+                <!-- Scanning Animation Lines -->
+                <div class="scanner-line"></div>
+                <div class="scan-overlay"></div>
             </div>
 
-            <div class="absolute bottom-1/3 left-10 bg-white p-3 rounded-xl shadow-lg border border-gray-100 flex items-center gap-2 animate-bounce" style="animation-duration: 4s;">
-                <i class="fab fa-apple text-gray-800 text-2xl"></i>
-                <span class="font-bold text-gray-700 text-xs">iOS Nativo</span>
+            <h2 class="font-heading text-3xl font-bold text-white mb-2">
+              Integração com <span class="text-brand-yellow">I.A.</span>
+            </h2>
+            
+            <p class="text-gray-300 text-sm mb-6 max-w-xs">
+              Utilização de modelos de Visão Computacional para validar fotos do checklist automaticamente em tempo real.
+            </p>
+
+            <div class="flex gap-3">
+                <span class="ai-badge px-3 py-1 rounded-full text-xs text-brand-yellow font-mono">
+                    <i class="fas fa-robot mr-1"></i> TensorFlow Lite
+                </span>
+                <span class="ai-badge px-3 py-1 rounded-full text-xs text-green-400 font-mono">
+                    <i class="fas fa-check-circle mr-1"></i> Auto-Validation
+                </span>
             </div>
 
+          </div>
         </div>
 
       </div>
+
+      <!-- Footer -->
+      <div class="absolute bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 px-12 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden border border-gray-200">
+                <img src="./assets/images/pages/outros/neemias.jpeg" alt="Neemias" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <p class="text-sm font-bold text-gray-800">Neemias Cormino Manso</p>
+                <p class="text-xs text-gray-500">Desenvolvedor FullStack Junior</p>
+            </div>
+        </div>
+      </div>
+
     </div>
     <script src="js/navigator.js"></script>
   </body>
