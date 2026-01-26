@@ -1,84 +1,151 @@
 @font-face {
-    font-family: 'Gendy';
-    src: url('../assets/fonts/gendy_sans.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Gendy";
+  src: url("../assets/fonts/gendy_sans.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Just';
-    src: url('../assets/fonts/just_sans.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Just";
+  src: url("../assets/fonts/just_sans.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* 2. Variáveis de Cores (Fácil manutenção) */
 :root {
-    --brand-green: #144F1F;
-    --brand-yellow: #F1CA14;
+  --brand-green: #144f1f;
+  --brand-yellow: #f1ca14;
 }
 
 /* 3. Sobrescrita Global (A Mágica) */
 /* Força todos os títulos a usarem Gendy, ignorando o Montserrat do Gamma */
-h1, h2, h3, h4, h5, h6, .font-montserrat {
-    font-family: 'Gendy', sans-serif !important;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-montserrat {
+  font-family: "Gendy", sans-serif !important;
 }
 
 /* Força todo o corpo a usar Just, ignorando Inter/Roboto */
-body, p, span, div, a, li, .font-inter {
-    font-family: 'Just', sans-serif !important;
+body,
+p,
+span,
+div,
+a,
+li,
+.font-inter {
+  font-family: "Just", sans-serif !important;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden !important; /* Força sem scroll */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1a1a1a; /* Fundo escuro para letterbox (opcional, pode manter o cinza) */
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden !important; /* Força sem scroll */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a; /* Fundo escuro para letterbox (opcional, pode manter o cinza) */
 }
 
 /* O container do slide não muda de tamanho, ele será escalado visualmente */
 .slide-container {
-    flex-shrink: 0; /* Impede o flexbox de esmagar o slide */
-    transform-origin: center center; /* O zoom acontece a partir do centro */
-    box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Sombra para destacar o slide do fundo */
+  flex-shrink: 0; /* Impede o flexbox de esmagar o slide */
+  transform-origin: center center; /* O zoom acontece a partir do centro */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); /* Sombra para destacar o slide do fundo */
 }
 
 /* 4. Áreas de Clique para Navegação */
 .nav-zone {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 15%; /* 15% da tela nas laterais */
-    z-index: 9999;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 15%; /* 15% da tela nas laterais */
+  z-index: 9999;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.2);
 }
 
 .nav-zone:hover {
-    opacity: 1;
-    background: linear-gradient(to right, rgba(0,0,0,0.05), transparent);
+  opacity: 1;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.05), transparent);
 }
 
-.nav-left { left: 0; }
-.nav-right { right: 0; text-align: right; background: linear-gradient(to left, rgba(0,0,0,0.05), transparent); }
+.nav-left {
+  left: 0;
+}
+.nav-right {
+  right: 0;
+  text-align: right;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.05), transparent);
+}
 
 /* Animação suave de entrada */
 body {
-    animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- CORREÇÃO PARA GERAÇÃO DE PDF --- */
+@media print {
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+
+  body {
+    /* Remove o comportamento de Flexbox que centraliza o slide */
+    display: block !important;
+    width: 1280px !important;
+    height: 720px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background-color: white !important; /* Remove o fundo cinza escuro */
+  }
+
+  .slide-container {
+    /* Garante tamanho exato */
+    width: 1280px !important;
+    height: 720px !important;
+
+    /* Remove o zoom calculado pelo JS */
+    transform: none !important;
+
+    /* Remove sombras e bordas de apresentação */
+    box-shadow: none !important;
+    border: none !important;
+
+    /* Garante posição absoluta no topo */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Esconde as setas de navegação no PDF */
+  .nav-zone {
+    display: none !important;
+  }
 }
